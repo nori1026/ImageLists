@@ -5,7 +5,11 @@ const config = require("config");
 var cors = require("cors");
 
 const app = express();
-app.use(cors());
+
+const origin =
+  process.env.NODE_ENV !== "production" ? "http://localhost:3000" : "prod-url";
+
+app.use(cors({ origin }));
 
 // Bodyparser Middleware
 app.use(express.json());
